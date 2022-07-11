@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Producto";
+}
+@Scripts.Render("~/bundles/producto")
+</br>
+<h2>Productos</h2>
+</br>
+<button type="button" class="btn btn-primary space-top-btn" onclick="ActivarModalCrear()">Agregar Producto</button>
+<table id="table-productos" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Valor Unitario</th>
+            <th class="space-width-td"></th>
+        </tr>
+    </thead>
+    <tbody id="tbody-productos"></tbody>
+</table>
+
+<!-- Modal crear / editar -->
+<div class="modal fade" id="modal-crear-editar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title-crear-editar">Crear Producto</h3>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="input-id-producto" hidden>
+                <div class="mb-3 row space-top-rows">
+                    <label for="input-nombre-producto" class="col-sm-4 col-form-label">Nombre Producto</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="input-nombre-producto">
+                    </div>
+                </div>
+                <div class="mb-3 row space-top-rows">
+                    <label for="input-valor-unitario" class="col-sm-4 col-form-label">Valor Unitario</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="input-valor-unitario">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="$('#modal-crear-editar').modal('hide');LimpiarFormulario()">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="ValidarCamposRequerdos()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal aletra -->
+<div class="modal fade" id="modal-alerta" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-titulo-alerta">Crear Producto</h3>
+            </div>
+            <div class="modal-body" id="modal-body-alerta"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="$('#modal-alerta').modal('hide')">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="modal-eliminar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Eliminar Producto</h3>
+            </div>
+            <div class="modal-body">
+                <p id="modal-p-mensaje"></p>
+                <input type="number" id="input-producto-eliminar" hidden />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="$('#modal-eliminar').modal('hide');$('#input-producto-eliminar').val(null)">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="CrearEditarProducto()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
